@@ -1,16 +1,7 @@
 <template>
   <div class="container">
     <div class="dash-bord">
-      <ul>
-        <listBox :resource="controllerList" />
-      </ul>
-      <ul>
-        <li>Model</li>
-      </ul>
-      <ul>
-        <li>View</li>
-        <li>1</li>
-      </ul>
+      <listBox v-for="(item, key) in resourceList" :resource="{'header': key, 'list': item}" :key="key" />
     </div>
   </div>
 </template>
@@ -21,7 +12,7 @@ export default {
   name: 'index',
   data () {
     return {
-      controllerList: []
+      resourceList: []
     }
   },
   components: {
@@ -33,7 +24,7 @@ export default {
         url: '/php-admin',
         method: 'get'
       }).then((response) => {
-        this.controllerList = response.data
+        this.resourceList = response.data
       }).catch((error) => {
         console.log(error)
       })
@@ -46,9 +37,12 @@ export default {
 </script>
 
 <style lang="scss">
+  .container{
+    height: 100%;
+  }
   .dash-bord{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-items: center;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
   }
 </style>

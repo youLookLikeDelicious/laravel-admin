@@ -5,12 +5,14 @@ resource:
   list: []
 }-->
 <template>
-  <ul class="list-box">
-      <li>{{resource.header}}</li>
-      <li v-for="(item, index) in resource.list" :key="index"  v-bind:style="{ textIndent: (( item.split('/').length || 1) - 1) * 2 + 'em' }" :class="{'directory-prefix': item.indexOf('.php') === -1}">
-          {{ item.split('/').pop() }}
-      </li>
-  </ul>
+  <div class="list-box">
+      <p>{{resource.header}}</p>
+      <ul>
+          <li v-for="(item, index) in resource.list" :key="index"  v-bind:style="{ textIndent: (( item.split('/').length || 1) - 1) * 2 + 'em' }" :class="{'directory-prefix': item.indexOf('.php') === -1}">
+              {{ item.split('/').pop() }}
+          </li>
+      </ul>
+  </div>
 </template>
 
 <script>
@@ -29,26 +31,38 @@ export default {
 
 <style lang="scss">
     .list-box{
+        height: 97%;
+        display: flex;
+        flex-direction: column;
         list-style: none;
-        width: 86%;
-        border-top-left-radius: .3rem;
-        background-color: #fff;
+        background: #fff;
         border-top-left-radius: .3rem;
         border-top-right-radius: 1.5rem;
         overflow: hidden;
+        p{
+            flex: 0 1 2.5rem;
+            line-height: 2.5rem;
+            background-image: linear-gradient(rgb(76, 184, 196), rgb(60, 211, 173));
+            color: #fff;
+            padding-left: .4rem;
+        }
+        ul{
+            overflow-y: scroll;
+            list-style: none;
+            flex: 1 1 auto;
+        }
         li{
-            padding: .3rem .5rem;
+            height: 2.1rem;
+            padding: .5rem .5rem;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
             border-bottom: .01rem solid #c6c6c6;
-            &:first-child{
-                background-image: linear-gradient(rgb(76, 184, 196), rgb(60, 211, 173));
-                color: #fff;
-            }
         }
     }
     .directory-prefix{
-        color: red;
+        &:before{
+            content: '▶'
+        }
     }
 </style>
