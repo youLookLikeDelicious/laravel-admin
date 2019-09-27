@@ -6,7 +6,7 @@ resource:
 }-->
 <template>
   <div class="list-box">
-      <p>{{resource.header}}</p>
+      <p>{{resource.header}} {{itemNum}}</p>
       <ul>
           <li v-for="(item, index) in resource.list" :key="index"  v-bind:style="{ textIndent: (( item.split('/').length || 1) - 1) * 2 + 'em' }" :class="{'directory-prefix': item.indexOf('.php') === -1}">
               {{ item.split('/').pop() }}
@@ -23,8 +23,11 @@ export default {
   },
   data () {
     return {
-      spaceChar: ' '
+      itemNum: ' '
     }
+  },
+  mounted () {
+    this.itemNum = this.resource.list.length - this.$el.querySelectorAll('li.directory-prefix').length
   }
 }
 </script>

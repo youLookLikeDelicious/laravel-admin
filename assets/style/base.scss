@@ -7,12 +7,13 @@ textarea{
 html{
   height: 100%;
   overflow: hidden;
-  font-size: 16px;
 }
 body{
-  overflow: hidden;
   fone-size: 62.5%;
+  height: 100%;
+  overflow: hidden;
 }
 #__nuxt, #__layout{
   height: 100%;
+  overflow: hidden;
 }

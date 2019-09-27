@@ -16,9 +16,9 @@
       font-size: 1.2rem;
       line-height: var(--height);
       padding-left: 2.3rem;
-      overflow-y: scroll;
       background-image: linear-gradient(to right bottom, #276ace, #29bdd9);
       margin-bottom: 2.4rem;
+      box-sizing: border-box;
     span{
       margin-left: 1rem;
       font-size: .7rem;
