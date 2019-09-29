@@ -6,20 +6,25 @@ resource:
 }-->
 <template>
   <div class="list-box">
-      <p>{{resource.header}} {{itemNum}}</p>
-      <ul>
-          <li v-for="(item, index) in resource.list" :key="index"  v-bind:style="{ textIndent: (( item.split('/').length || 1) - 1) * 2 + 'em' }" :class="{'directory-prefix': item.indexOf('.php') === -1}">
-              {{ item.split('/').pop() }}
-          </li>
-      </ul>
+    <p> {{ resource.header }} {{ itemNum }}</p>
+    <ul>
+      <li v-for="(item, index) in resource.list" :key="index" :style="{ textIndent: (( item.split('/').length || 1) - 1) * 2 + 'em' }" :class="{'directory-prefix': item.indexOf('.php') === -1}">
+        {{ item.split('/').pop() }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'list-box',
+  name: 'ListBox',
   props: {
-    resource: Object
+    resource: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
   },
   data () {
     return {
@@ -50,9 +55,11 @@ export default {
             padding-left: .4rem;
         }
         ul{
+            overflow-x: hidden;
             overflow-y: scroll;
             list-style: none;
             flex: 1 1 auto;
+            color: #666;
         }
         li{
             height: 2.1rem;
@@ -65,7 +72,8 @@ export default {
     }
     .directory-prefix{
         &:before{
-            content: '▶'
+            content: '▶';
+            cursor: pointer;
         }
     }
 </style>

@@ -24,13 +24,20 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/style/base.scss'
+    '@/assets/style/base.sass'
   ],
+  styleResources: {
+    scss: [
+      '@/assets/style/_variable.scss',
+      '@/assets/style/_mixin.scss',
+      '@/assets/style/_placeholder.scss'
+    ]
+  },
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '@/plugins/Vue-dotenv.js', mode: 'client' }
+    { src: '@/plugins/vue-props.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -45,7 +52,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Axios module configuration
