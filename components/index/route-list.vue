@@ -1,15 +1,15 @@
 <template>
   <div class="route-list">
-    <table>
-      <tr>
-        <td v-for="(item, index) in title" :key="index">
-          {{ item }}
-        </td>
-      </tr>
-    </table>
+    <!--<table>-->
+      <!--<tr>-->
+        <!--<td v-for="(item, index) in title" :key="index">-->
+          <!--{{ item }}-->
+        <!--</td>-->
+      <!--</tr>-->
+    <!--</table>-->
     <div>
       <table>
-        <tr v-for="(list, index) in resource.slice(1)" :key="index">
+        <tr v-for="(list, index) in resource" :key="index">
           <td v-for="(item, ind) in list" :key="ind">
             {{ item }}
           </td>
@@ -44,8 +44,34 @@ export default {
   background-color: #fff;
   flex-direction: column;
   color: $list-font-color;
+  height: 97%;
   div{
     overflow-y: auto;
+  }
+  table, table tr, talbe td{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  table{
+    $tr-height: 3.5rem;
+    tr{
+      &:first-child{
+        position: absolute;
+        height: $tr-height;
+        top: 0;
+        td{
+          height: $tr-height;
+        }
+      }
+      &:nth-child(2){
+        margin-top: $tr-height;
+      }
+    }
+    td{
+      padding: .2rem .3rem;
+      border: 1px solid red;
+    }
   }
 }
 </style>

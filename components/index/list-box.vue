@@ -59,7 +59,7 @@ export default {
             overflow-y: scroll;
             list-style: none;
             flex: 1 1 auto;
-            color: #666;
+            color: $list-font-color;
         }
         li{
             height: 2.1rem;

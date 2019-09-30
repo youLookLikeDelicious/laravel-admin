@@ -24,7 +24,7 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/style/base.sass'
+    '@/assets/style/base.scss'
   ],
   styleResources: {
     scss: [

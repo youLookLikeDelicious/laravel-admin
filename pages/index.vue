@@ -40,23 +40,23 @@ export default {
 </script>
 
 <style lang="scss">
-  .container{
-    display: flex;
-    height: 100%;
-    overflow-x: auto;
-    box-sizing: border-box;
+.container{
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+.dash-bord{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  div{
+    margin-right: 2.4rem;
   }
-  .dash-bord{
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding-left: 2.4rem;
-    padding-right: 2.4rem;
-    div{
-      margin-right: 2.4rem;
-    }
-  }
+}
 </style>
