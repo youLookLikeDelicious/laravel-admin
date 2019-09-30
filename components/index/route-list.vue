@@ -1,12 +1,12 @@
 <template>
   <div class="route-list">
-    <!--<table>-->
-      <!--<tr>-->
-        <!--<td v-for="(item, index) in title" :key="index">-->
-          <!--{{ item }}-->
-        <!--</td>-->
-      <!--</tr>-->
-    <!--</table>-->
+    <table>
+      <tr>
+        <td v-for="(item, index) in title" :key="index" :style="{width: `${tdWidthList[index]}px}`}">
+          {{ item }}
+        </td>
+      </tr>
+    </table>
     <div>
       <table>
         <tr v-for="(list, index) in resource" :key="index">
@@ -33,7 +33,26 @@ export default {
   computed: {
     title () {
       return this.resource[0]
+    },
+    tdWidthList () {
+      if (!this.$el && !this.resource.length) {
+        return []
+      }
+
+      const trs = this.$el.querySelectorAll('table')[1]
+      const tds = trs.querySelectorAll('td')
+      const widthList = []
+
+      for (let i = 0, len = tds.length; i < len; i++) {
+        widthList.push(tds[i].getComputedStyle('width'))
+      }
+
+      return widthList
     }
+  },
+  mounted () {
+    const table = this.$el.querySelectorAll('table')[1]
+    console.log(table.rows[0])
   }
 }
 </script>
@@ -41,7 +60,6 @@ export default {
 <style lang="scss">
 .route-list{
   display: flex;
-  background-color: #fff;
   flex-direction: column;
   color: $list-font-color;
   height: 97%;
@@ -54,23 +72,15 @@ export default {
     box-sizing: border-box;
   }
   table{
-    $tr-height: 3.5rem;
+    border-radius: .3rem;
+    background-color: #fff;
     tr{
-      &:first-child{
-        position: absolute;
-        height: $tr-height;
-        top: 0;
-        td{
-          height: $tr-height;
-        }
-      }
-      &:nth-child(2){
-        margin-top: $tr-height;
-      }
+
     }
     td{
-      padding: .2rem .3rem;
-      border: 1px solid red;
+      padding: .2rem .7rem;
+      border-left: .1rem solid #c6c6c6;
+      border-bottom: .1rem solid #c6c6c6;
     }
   }
 }
